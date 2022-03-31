@@ -27,12 +27,11 @@ const userSchema = new Schema({
     },
     courses:[{
         type: ObjectId,
-        // ref:"courses"
+        ref: 'Courses',
     }]
 },{
     timestamps: true
 });
-
 
 //Encrypting password before saving to database
 userSchema.pre('save',async function(next) {
