@@ -6,6 +6,7 @@ const Courses = require("./models/Course")
 const connectDB = require("./DB/mongoose")
 const SendOtp = require("./Email Service/email")
 const otpGenerator = require("otp-generator")
+
 const otp = otpGenerator.generate(6, {
   upperCaseAlphabets: false,
   specialChars: false,
@@ -40,8 +41,8 @@ router.post("/login", async (req, res) => {
     SendOtp(user.email, user.name, otp)
     res.status(201).send(user)
   } catch (err) {
-    console.log(err)
-    res.status(400).send(err)
+    console.log(err.message);
+    res.status(400).send(err.message);
   }
 })
 
@@ -58,7 +59,7 @@ router.post("/admin/register", async (req, res) => {
     await user.save()
     res.status(201).send(user)
   } catch (err) {
-    res.status(400).send(err)
+    res.status(400).send(err.Error);
   }
 })
 
