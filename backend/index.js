@@ -26,8 +26,6 @@ router.post("/register", async (req, res) => {
   try {
     //?Saving data to database
     await user.save()
-    //?generating authentication token
-    await user.generateAuthToken()
     res.status(201).send(user)
   } catch (err) {
     res.status(400).send(err)
@@ -37,9 +35,7 @@ router.post("/register", async (req, res) => {
 //?Route for Logging in a User
 router.post("/login", async (req, res) => {
   try {
-    const user = await User.findByCredentials(req.body.email, req.body.password)
-    //?generating authentication token
-    const token = await user.generateAuthToken()
+    const user = await User.findByCredentials(req.body.email, req.body.password);
     //?Sending otp to user's email
     SendOtp(user.email, user.name, otp)
     res.status(201).send(user)

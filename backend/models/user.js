@@ -30,12 +30,6 @@ const userSchema = new Schema({
         type: ObjectId,
         ref: 'Courses',
     }],
-    tokens: [{
-        token: {
-            type: String,
-            required: true,
-        }
-    }]
 },{
     timestamps: true
 });
@@ -54,14 +48,6 @@ userSchema.statics.findByCredentials = async (email,password) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if(!isMatch) throw new Error('Invaild password!');
     return user;
-}
-
-userSchema.methods.generateAuthToken = async function(){
-    const user = this;
-    const token = jwt.sign({_id: user._id.toString()}, process.env.JWT_SECRET);
-    user.tokens = user.tokens.concat({token});
-    await user.save();
-    return token; 
 }
 
 const User = mongoose.model('User', userSchema);
