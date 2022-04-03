@@ -24,6 +24,7 @@ const Login = () => {
     password: "",
   })
 
+  //const bg = useColorModeValue("rgba(255,255,255,0.5)", "rgba(82,82,88,0.6)")
   const bg = useColorModeValue("white", "gray.900")
   const { email, password } = form
 

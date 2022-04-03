@@ -36,7 +36,12 @@ const Header = () => {
     >
       <Main>
         <Link to="/">
-          <Image boxSize="120px" objectFit="cover" src={logo}></Image>
+          <Image
+            filter={colorMode === "dark" ? "invert(100%)" : "invert(0%)"}
+            boxSize="120px"
+            objectFit="cover"
+            src={logo}
+          ></Image>
         </Link>
       </Main>
       <Spacer />
@@ -54,10 +59,10 @@ const Header = () => {
           </Button>
         ) : (
           <>
-            <Button variant="ghost">
+            <Button size="sm" variant="solid" colorScheme="green">
               <Link to="/login">Login</Link>
             </Button>
-            <Button variant="solid" colorScheme="messenger">
+            <Button size="sm" variant="solid" colorScheme="messenger">
               <Link to="/register">SignUp</Link>
             </Button>
           </>
