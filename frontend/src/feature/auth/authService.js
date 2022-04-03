@@ -1,7 +1,7 @@
 import axios from "axios"
 
-const API_URL_REGISTER = "/api/user/register"
-const API_URL_LOGIN = "/api/user/login"
+const API_URL_REGISTER = "/register"
+const API_URL_LOGIN = "/login"
 
 //? Register User
 
