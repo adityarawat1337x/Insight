@@ -12,11 +12,11 @@ import {
   HStack,
 } from "@chakra-ui/react"
 import { IconButton } from "@chakra-ui/button"
-import { Icon } from "@chakra-ui/react"
+import { Image } from "@chakra-ui/react"
 import { BsMoonFill } from "react-icons/bs"
 import { FaSun } from "react-icons/fa"
 import styled from "styled-components"
-import { FcReading } from "react-icons/fc"
+import logo from "../assets/logo.svg"
 
 const Header = () => {
   const { user } = useSelector((state) => state.auth)
@@ -28,7 +28,6 @@ const Header = () => {
     <Navbar
       pl="20"
       pr="20"
-      mt="10"
       position="absolute"
       top="0"
       left="0"
@@ -37,7 +36,7 @@ const Header = () => {
     >
       <Main>
         <Link to="/">
-          <Icon as={FcReading}></Icon>
+          <Image boxSize="120px" objectFit="cover" src={logo}></Image>
         </Link>
       </Main>
       <Spacer />

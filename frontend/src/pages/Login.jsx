@@ -49,7 +49,7 @@ const Login = () => {
     }
 
     if (!isLoading && (isSuccess || user)) {
-      toast.success("Logged In")
+      //toast.success("Logged In")
       navigate("/")
     }
 
