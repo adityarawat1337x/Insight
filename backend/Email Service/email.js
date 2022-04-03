@@ -1,24 +1,23 @@
 const apiKey = process.env.API_KEY_MAILJET
 const SecretKey = process.env.SECRET_KEY_MAILJET
-const mailjet = require ('node-mailjet')
-.connect(`${apiKey}`,`${SecretKey}`);
-const SendOtp = (toemail,name,otp) =>mailjet
-    .post("send", {'version': 'v3.1'})
-    .request({
-    "Messages":[
-        {
-        "From": {
-            "Email": process.env.SENDER_MAIL,
-            "name": "Insight"
+const mailjet = require("node-mailjet").connect(`${apiKey}`, `${SecretKey}`)
+
+const SendOtp = (toemail, name, otp) =>
+  mailjet.post("send", { version: "v3.1" }).request({
+    Messages: [
+      {
+        From: {
+          Email: process.env.SENDER_MAIL,
+          name: "Insight",
         },
-        "To": [
-            {
-            "Email": toemail,
-            }
+        To: [
+          {
+            Email: toemail,
+          },
         ],
-        "title":"Insight",
-        "Subject": "Verification",
-        "HTMLPart": `   <html>
+        title: "Insight",
+        Subject: "Verification",
+        HTMLPart: `   <html>
                         <body>
                         <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
                         <div style="margin:50px auto;width:70%;padding:20px 0">
@@ -36,9 +35,9 @@ const SendOtp = (toemail,name,otp) =>mailjet
                         </div>
                         </body>
                     </html>`,
-        "CustomID": "AppGettingStartedTest"
-        }
-    ]
-    })
+        CustomID: "AppGettingStartedTest",
+      },
+    ],
+  })
 
-module.exports = SendOtp;
+module.exports = SendOtp
