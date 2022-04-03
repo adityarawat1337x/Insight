@@ -13,8 +13,8 @@ const App = () => {
       <ChakraProvider>
         <BackGroundProvider>
           <Router>
-            <Header />
             <RoutesAnimationProvider />
+            <Header />
           </Router>
           <ToastProvider />
         </BackGroundProvider>
