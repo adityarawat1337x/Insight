@@ -6,12 +6,14 @@ const Courses = require("./models/Course")
 const connectDB = require("./DB/mongoose")
 const SendOtp = require("./Email Service/email")
 const otpGenerator = require("otp-generator")
+
 const otp = otpGenerator.generate(6, {
   upperCaseAlphabets: false,
   specialChars: false,
   lowerCaseAlphabets: false,
   digits: true,
 })
+
 //!Connecting Database
 connectDB()
 
