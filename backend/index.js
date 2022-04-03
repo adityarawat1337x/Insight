@@ -37,13 +37,13 @@ router.post("/register", async (req, res) => {
 //?Route for Logging in a User
 router.post("/login", async (req, res) => {
   try {
-    const user = await User.findByCredentials(req.body.email, req.body.password);
+    const user = await User.findByCredentials(req.body.email, req.body.password)
     //?Sending otp to user's email
     SendOtp(user.email, user.name, otp)
     res.status(201).send(user)
   } catch (err) {
-    console.log(err.message);
-    res.status(400).send(err.message);
+    console.log(err.message)
+    res.status(400).send(err.message)
   }
 })
 
@@ -60,7 +60,7 @@ router.post("/admin/register", async (req, res) => {
     await user.save()
     res.status(201).send(user)
   } catch (err) {
-    res.status(400).send(err.Error);
+    res.status(400).send(err.Error)
   }
 })
 
