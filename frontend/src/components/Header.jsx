@@ -28,6 +28,7 @@ const Header = () => {
     <Navbar
       pl="20"
       pr="20"
+      mt="5"
       position="absolute"
       top="0"
       left="0"
@@ -38,7 +39,7 @@ const Header = () => {
         <Link to="/">
           <Image
             filter={colorMode === "dark" ? "invert(100%)" : "invert(0%)"}
-            boxSize="120px"
+            boxSize="60px"
             objectFit="cover"
             src={logo}
           ></Image>

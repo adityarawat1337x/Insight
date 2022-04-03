@@ -1,6 +1,5 @@
 import { useColorModeValue, Box, useColorMode, Image } from "@chakra-ui/react"
 import React from "react"
-import dark from "../assets/dark.png"
 import light from "../assets/lines2.svg"
 
 const BackGroundProvider = (props) => {
