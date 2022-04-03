@@ -16,7 +16,7 @@ import { Icon } from "@chakra-ui/react"
 import { BsMoonFill } from "react-icons/bs"
 import { FaSun } from "react-icons/fa"
 import styled from "styled-components"
-import { MdAddTask } from "react-icons/md"
+import { FcReading } from "react-icons/fc"
 
 const Header = () => {
   const { user } = useSelector((state) => state.auth)
@@ -37,7 +37,7 @@ const Header = () => {
     >
       <Main>
         <Link to="/">
-          <Icon as={MdAddTask}></Icon>
+          <Icon as={FcReading}></Icon>
         </Link>
       </Main>
       <Spacer />

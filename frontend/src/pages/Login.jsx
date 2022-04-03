@@ -20,7 +20,7 @@ import { reset, login } from "../feature/auth/authSlice"
 
 const Login = () => {
   const [form, setform] = useState({
-    emai: "",
+    email: "",
     password: "",
   })
 
@@ -49,7 +49,7 @@ const Login = () => {
     }
 
     if (!isLoading && (isSuccess || user)) {
-      //toast.success("Logged In")
+      toast.success("Logged In")
       navigate("/")
     }
 
