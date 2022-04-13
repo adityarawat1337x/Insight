@@ -4,7 +4,7 @@ import light from "../assets/lines2.svg"
 
 const BackGroundProvider = (props) => {
   const bgI = useColorModeValue(light, light)
-  const { colorMode, toggleColorMode } = useColorMode()
+  const { colorMode} = useColorMode()
 
   return (
     <Box overflow="hidden" h="100vh">
