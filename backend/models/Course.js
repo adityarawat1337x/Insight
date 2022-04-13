@@ -11,10 +11,17 @@ const courseSchema = new Schema({
         type: Number,
         required: true,
     },
-    creater_id:{
+    courseURL:{
+        type: String,
+        required: true,
+        unique: true,
+    },
+    creator_id:{
         type: ObjectId, 
         ref: 'User',
-    },
+    }
+},{
+    timestamps: true,
 })
 
 const Courses = mongoose.model('Courses', courseSchema);

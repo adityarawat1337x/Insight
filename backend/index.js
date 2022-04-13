@@ -47,6 +47,7 @@ router.post("/login", async (req, res) => {
   }
 })
 
+//!Register user by admin
 router.post("/admin/register", async (req, res) => {
   //?Creating a new Object of the creater model
   const user = new User({
@@ -65,12 +66,13 @@ router.post("/admin/register", async (req, res) => {
 })
 
 //!Adding courses to the database having the id of the created attached
-router.post("/addcourse", async (req, res) => {
+router.post("/createcourse", async (req, res) => {
   //?Creating a new Object of the Course model
   const course = new Courses({
     courseName: req.body.courseName,
     price: req.body.price,
-    creater_id: req.body.creater_id,
+    creator_id: req.body.creator_id,
+    courseURL: req.body.courseURL,
   })
   try {
     //?Saving data to database
@@ -80,5 +82,45 @@ router.post("/addcourse", async (req, res) => {
     res.status(400).send(err)
   }
 })
+
+//?Route for enrolling a user to a course
+router.post("/addcourse", async (req, res) => {
+  //?Creating a new Object of the Course model
+  const _id=req.body._id;
+  try {
+    //?Saving data to database
+    await User.findByIdAndUpdate(_id,{$push:{courses:req.body.course_id}})
+    res.status(201).send("Course added")
+  } catch (err) {
+    res.status(400).send(err)
+  }
+})
+
+
+//?Get all courses of a particular user or creator
+router.get("/courses", async (req, res) => {
+  const _id = req.body._id;
+  try{
+    const userCourses = await Courses.find({creator_id: _id})
+    res.send(userCourses)
+  }catch(e){
+    console.log(e);
+    res.status(500).send(e);
+  }
+})
+
+//? Get a particular course by id
+router.get("/course", async (req, res) => {
+  const _id = req.body.id;
+  try{
+    const course = await Courses.find({_id: _id});
+    if(!course) return res.status(404).send();
+    res.status(200).send(course)
+  }catch(e){
+    res.status(500).send(e);
+  }
+})
+
+
 
 module.exports = router
